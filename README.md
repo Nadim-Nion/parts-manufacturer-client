@@ -1,4 +1,7 @@
-# React + Vite
+# CompParts Hub (Client Side)
+## Computer Parts Manufacturer Website
+
+### React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
