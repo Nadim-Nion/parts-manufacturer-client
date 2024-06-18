@@ -1,9 +1,11 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import Header from '../pages/SharedComponent/Header/Header';
 
 const MainLayout = () => {
     return (
         <div>
+            <Header></Header>
             <Outlet></Outlet>
         </div>
     );
