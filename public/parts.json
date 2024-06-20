@@ -1,0 +1,50 @@
+[
+    {
+        "name": "CPU",
+        "image": "https://i.ibb.co/hmcVpkt/cpu.jpg",
+        "short_description": "High-performance quad-core processor.",
+        "minimum_order_quantity": 1,
+        "available_quantity": 50,
+        "price_per_unit": 250.00
+    },
+    {
+        "name": "GPU",
+        "image": "https://i.ibb.co/cb8w0pS/gpu.jpg",
+        "short_description": "Powerful graphics card for gaming and design.",
+        "minimum_order_quantity": 1,
+        "available_quantity": 30,
+        "price_per_unit": 400.00
+    },
+    {
+        "name": "Keyboard",
+        "image": "https://i.ibb.co/6yLFzxF/keyboard.jpg",
+        "short_description": "Mechanical keyboard with customizable keys.",
+        "minimum_order_quantity": 5,
+        "available_quantity": 100,
+        "price_per_unit": 50.00
+    },
+    {
+        "name": "Monitor",
+        "image": "https://i.ibb.co/xmpPVRh/monitor.jpg",
+        "short_description": "24-inch full HD monitor with vibrant colors.",
+        "minimum_order_quantity": 2,
+        "available_quantity": 40,
+        "price_per_unit": 150.00
+    },
+    {
+        "name": "Motherboard",
+        "image": "https://i.ibb.co/cXrfDSH/motherboard.jpg",
+        "short_description": "ATX motherboard with multi-GPU support.",
+        "minimum_order_quantity": 1,
+        "available_quantity": 25,
+        "price_per_unit": 200.00
+    },
+    {
+        "name": "Mouse",
+        "image": "https://i.ibb.co/s6pFyC8/mouse.jpg",
+        "short_description": "Ergonomic mouse with high precision sensor.",
+        "minimum_order_quantity": 10,
+        "available_quantity": 200,
+        "price_per_unit": 25.00
+    }
+]
