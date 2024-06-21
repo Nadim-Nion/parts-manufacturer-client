@@ -1,5 +1,6 @@
 [
     {
+        "_id": 1,
         "name": "CPU",
         "image": "https://i.ibb.co/hmcVpkt/cpu.jpg",
         "short_description": "High-performance quad-core processor.",
@@ -8,6 +9,7 @@
         "price_per_unit": 250.00
     },
     {
+        "_id": 2,
         "name": "GPU",
         "image": "https://i.ibb.co/cb8w0pS/gpu.jpg",
         "short_description": "Powerful graphics card for gaming and design.",
@@ -16,6 +18,7 @@
         "price_per_unit": 400.00
     },
     {
+        "_id": 3,
         "name": "Keyboard",
         "image": "https://i.ibb.co/6yLFzxF/keyboard.jpg",
         "short_description": "Mechanical keyboard with customizable keys.",
@@ -24,6 +27,7 @@
         "price_per_unit": 50.00
     },
     {
+        "_id": 4,
         "name": "Monitor",
         "image": "https://i.ibb.co/xmpPVRh/monitor.jpg",
         "short_description": "24-inch full HD monitor with vibrant colors.",
@@ -32,6 +36,7 @@
         "price_per_unit": 150.00
     },
     {
+        "_id": 5,
         "name": "Motherboard",
         "image": "https://i.ibb.co/cXrfDSH/motherboard.jpg",
         "short_description": "ATX motherboard with multi-GPU support.",
@@ -40,6 +45,7 @@
         "price_per_unit": 200.00
     },
     {
+        "_id": 6,
         "name": "Mouse",
         "image": "https://i.ibb.co/s6pFyC8/mouse.jpg",
         "short_description": "Ergonomic mouse with high precision sensor.",
