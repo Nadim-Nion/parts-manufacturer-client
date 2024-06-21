@@ -1,15 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Part from '../Part/Part';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 const Parts = () => {
-    const [parts, setParts] = useState([]);
+    /* const [parts, setParts] = useState([]);
     useEffect(() => {
         fetch('parts.json')
             .then(res => res.json())
             .then(data => {
                 setParts(data);
             })
-    }, []);
+    }, []); */
+
+    const axiosPublic = useAxiosPublic();
+
+    const { data: parts = [] } = useQuery({
+        queryKey: ['parts'],
+        queryFn: async () => {
+            const res = await axiosPublic('/parts');
+            return res.data;
+        }
+    })
 
     return (
         <div className='my-4'>
