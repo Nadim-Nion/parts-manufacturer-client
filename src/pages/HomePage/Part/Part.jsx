@@ -3,7 +3,7 @@ import React from 'react';
 const Part = ({ part }) => {
     const { name, image, short_description, minimum_order_quantity, available_quantity, price_per_unit } = part;
     return (
-        <div>
+        <div className='flex justify-center items-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <figure><img src={image} alt="Shoes" /></figure>
                 <div className="card-body">
