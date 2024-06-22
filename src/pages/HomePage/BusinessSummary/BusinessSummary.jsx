@@ -4,7 +4,7 @@ import { FaComputer, FaDollarSign, FaPen, FaPeopleGroup } from 'react-icons/fa6'
 const BusinessSummary = () => {
     return (
         <div>
-            <h2 className='text-4xl text-center font-bold text-black my-5'>Millions of Business Trusts Us</h2>
+            <h2 className='text-4xl text-center font-bold text-purple-700 my-5'>Millions of Business Trusts Us</h2>
             <div className='flex justify-center'>
                 <div className="stats shadow">
 
