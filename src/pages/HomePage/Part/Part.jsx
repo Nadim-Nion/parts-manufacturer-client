@@ -13,7 +13,7 @@ const Part = ({ part }) => {
                     <p className='font-semibold'>Available Quantity: {available_quantity}</p>
                     <p className='font-semibold'>Price Per Unit: ${price_per_unit}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Purchase</button>
+                        <button className="btn btn-outline btn-primary border-0 border-b-4">Purchase</button>
                     </div>
                 </div>
             </div>
