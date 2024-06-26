@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const Header = () => {
 
     const navItems = <>
+        <li className='font-bold'><Link to="/">Home</Link></li>
         <li className='font-bold'><Link to="/purchase">Purchase</Link></li>
         <li className='font-bold'><Link to="/dashboard">Dashboard</Link></li>
         <li className='font-bold'><Link to="/blogs">Blogs</Link></li>
