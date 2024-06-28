@@ -1,8 +1,12 @@
 import React from 'react';
 import { useForm } from "react-hook-form"
 import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const Login = () => {
+    const { createUser } = useAuth();
+
     const {
         register,
         handleSubmit,
@@ -12,8 +16,36 @@ const Login = () => {
 
     const onSubmit = (data) => {
         console.log(data);
+        const { email, password } = data;
+
+        createUser(email, password)
+            .then(result => {
+                const newUser = result.user;
+                console.log(newUser);
+
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User has been created successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+            .catch(error => {
+                console.log(error);
+
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: `${error.message}`
+                });
+            })
+
+
+
         reset();
     };
+
 
     return (
         <div className="h-screen flex items-center justify-center">
