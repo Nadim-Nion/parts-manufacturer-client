@@ -5,7 +5,7 @@ import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 
 const Login = () => {
-    const { createUser } = useAuth();
+    const { createUser, updateUserProfile } = useAuth();
 
     const {
         register,
@@ -16,20 +16,25 @@ const Login = () => {
 
     const onSubmit = (data) => {
         console.log(data);
-        const { email, password } = data;
+        const { email, password, name } = data;
 
         createUser(email, password)
             .then(result => {
                 const newUser = result.user;
                 console.log(newUser);
 
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "User has been created successfully",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
+                updateUserProfile(name)
+                    .then(() => {
+                        console.log('User information updated successfully');
+
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "User has been created successfully",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    });
             })
             .catch(error => {
                 console.log(error);
