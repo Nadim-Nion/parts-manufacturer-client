@@ -1,12 +1,13 @@
 import React from 'react';
 import { useForm } from "react-hook-form"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
 
 const Login = () => {
     const { signIn } = useAuth();
+    const navigate = useNavigate();
 
     const {
         register,
@@ -31,6 +32,8 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+
+                navigate('/');
             })
             .catch(error => {
                 console.log(error);
