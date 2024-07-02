@@ -66,13 +66,13 @@ const Login = () => {
                     <label>Password</label>
                     <input className='px-3 py-2' type='password' {...register("password", { required: true })} />
                     {errors.password?.type === 'required' && <p className='text-red-700'>Password is required</p>}
+                    <button type="submit" className="btn btn-primary">Register</button>
                     <p>
                         Already have an account? Please
                         <span className="link ml-3">
                             <Link to="/login">Login</Link>
                         </span>
                     </p>
-                    <button type="submit" className="btn btn-primary">Register</button>
                 </form>
             </div>
         </div>
