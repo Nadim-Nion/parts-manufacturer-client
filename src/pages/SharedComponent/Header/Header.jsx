@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const Header = () => {
-    const { user } = useAuth();
+    const { user, logOut } = useAuth();
 
     const navItems = <>
         <li className='font-bold'><Link to="/">Home</Link></li>
@@ -12,9 +13,25 @@ const Header = () => {
         <li className='font-bold'><Link to="/blogs">Blogs</Link></li>
         <li className='font-bold'><Link to="/portfolio">My Portfolio</Link></li>
         {
-            user && <li className='font-bold mt-2'>{user.displayName || user.email}</li>
+            user && <li className='font-bold mt-2'>{user?.displayName || user?.email}</li>
         }
     </>;
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${user?.displayName} logged out successfully`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    };
 
     return (
         <div>
@@ -56,7 +73,13 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn font-bold">Log Out</a>
+                    {
+                        user ? <button onClick={() => handleLogOut(logOut)} className="btn btn-outline btn-primary font-bold">Log Out</button>
+                            :
+                            <Link to="/login">
+                                <button className="btn btn-outline btn-primary font-bold">Login</button>
+                            </Link>
+                    }
                 </div>
             </div>
         </div>
