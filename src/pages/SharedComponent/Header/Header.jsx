@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 const Header = () => {
+    const { user } = useAuth();
 
     const navItems = <>
         <li className='font-bold'><Link to="/">Home</Link></li>
@@ -9,6 +11,9 @@ const Header = () => {
         <li className='font-bold'><Link to="/dashboard">Dashboard</Link></li>
         <li className='font-bold'><Link to="/blogs">Blogs</Link></li>
         <li className='font-bold'><Link to="/portfolio">My Portfolio</Link></li>
+        {
+            user && <li className='font-bold mt-2'>{user.displayName || user.email}</li>
+        }
     </>;
 
     return (
