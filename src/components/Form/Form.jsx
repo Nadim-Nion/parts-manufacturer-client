@@ -24,7 +24,7 @@ const Form = () => {
                 <form className='flex flex-col space-y-5 w-1/2 mx-auto' onSubmit={handleSubmit(onSubmit)}>
                     {/* Parts Name */}
                     <div className='flex items-center space-x-4'>
-                        <label className='w-1/3'>Parts:</label>
+                        <label className='w-1/3'>Part:</label>
                         <input className='px-3 py-2 flex-1' {...register("partsName", { required: true })} />
                     </div>
                     {errors.partsName?.type === 'required' && <p className='text-red-700'>Parts Name is required</p>}
