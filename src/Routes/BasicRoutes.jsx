@@ -4,6 +4,8 @@ import ErrorPage from "../pages/SharedComponent/ErrorPage/ErrorPage";
 import Home from "../pages/HomePage/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register"
+import Purchase from "../pages/PurchasePage/Purchase/Purchase";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -14,6 +16,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path: 'purchase',
+                element: <PrivateRoute><Purchase></Purchase></PrivateRoute>
             },
             {
                 path: 'login',

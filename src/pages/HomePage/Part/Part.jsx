@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Part = ({ part }) => {
     const { name, image, short_description, minimum_order_quantity, available_quantity, price_per_unit } = part;
@@ -13,7 +14,9 @@ const Part = ({ part }) => {
                     <p className='font-semibold'>Available Quantity: {available_quantity}</p>
                     <p className='font-semibold'>Price Per Unit: ${price_per_unit}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-outline btn-primary border-0 border-b-4">Purchase</button>
+                        <Link to="/purchase">
+                            <button className="btn btn-outline btn-primary border-0 border-b-4">Purchase</button>
+                        </Link>
                     </div>
                 </div>
             </div>
