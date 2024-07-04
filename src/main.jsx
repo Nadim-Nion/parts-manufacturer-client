@@ -11,6 +11,7 @@ import {
 } from '@tanstack/react-query'
 import AuthProvider from './providers/AuthProvider.jsx';
 import { HelmetProvider } from 'react-helmet-async';
+import PartProvider from './providers/PartProvider.jsx';
 
 const queryClient = new QueryClient();
 
@@ -19,9 +20,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <HelmetProvider>
-          <div className='max-w-screen-xl mx-auto'>
-            <RouterProvider router={router} />
-          </div>
+          <PartProvider>
+            <div className='max-w-screen-xl mx-auto'>
+              <RouterProvider router={router} />
+            </div>
+          </PartProvider>
         </HelmetProvider>
       </QueryClientProvider>
     </AuthProvider>

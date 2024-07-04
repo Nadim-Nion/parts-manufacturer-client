@@ -6,6 +6,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register"
 import Purchase from "../pages/PurchasePage/Purchase/Purchase";
 import PrivateRoute from "./PrivateRoute";
+import PartProvider from "../providers/PartProvider";
 
 const router = createBrowserRouter([
     {
@@ -19,7 +20,8 @@ const router = createBrowserRouter([
             },
             {
                 path: 'purchase',
-                element: <PrivateRoute><Purchase></Purchase></PrivateRoute>
+                element: <PrivateRoute><PartProvider><Purchase></Purchase></PartProvider></PrivateRoute>
+
             },
             {
                 path: 'login',

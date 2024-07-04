@@ -1,10 +1,12 @@
 import React from 'react';
 import { useForm } from "react-hook-form"
 import useAuth from '../../hooks/useAuth';
+import usePart from '../../hooks/usePart';
 
 
 const Form = () => {
     const { user } = useAuth();
+    const { selectedPart } = usePart();
 
     const {
         register,
@@ -25,7 +27,7 @@ const Form = () => {
                     {/* Parts Name */}
                     <div className='flex items-center space-x-4'>
                         <label className='w-1/3'>Part:</label>
-                        <input className='px-3 py-2 flex-1' {...register("partsName", { required: true })} />
+                        <input defaultValue={selectedPart?.name} className='px-3 py-2 flex-1' {...register("partsName", { required: true })} />
                     </div>
                     {errors.partsName?.type === 'required' && <p className='text-red-700'>Parts Name is required</p>}
 
@@ -60,7 +62,7 @@ const Form = () => {
                     {/* Quantity */}
                     <div className='flex items-center space-x-4'>
                         <label className='w-1/3'>Quantity:</label>
-                        <input className='px-3 py-2 flex-1' {...register("quantity", { required: true })} />
+                        <input defaultValue={selectedPart?.minimum_order_quantity} className='px-3 py-2 flex-1' {...register("quantity", { required: true })} />
                     </div>
                     {errors.quantity?.type === 'required' && <p className='text-red-700'>Quantity is required</p>}
 

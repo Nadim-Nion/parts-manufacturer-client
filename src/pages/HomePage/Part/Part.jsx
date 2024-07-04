@@ -1,8 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import usePart from '../../../hooks/usePart';
+
 
 const Part = ({ part }) => {
+    const { setSelectedPart } = usePart();
     const { name, image, short_description, minimum_order_quantity, available_quantity, price_per_unit } = part;
+    const navigate = useNavigate();
+
+    const handlePurchaseClick = () => {
+        setSelectedPart(part);
+        navigate('/purchase', { state: { part } })
+    };
+
     return (
         <div className='flex justify-center items-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
@@ -14,9 +24,10 @@ const Part = ({ part }) => {
                     <p className='font-semibold'>Available Quantity: {available_quantity}</p>
                     <p className='font-semibold'>Price Per Unit: ${price_per_unit}</p>
                     <div className="card-actions justify-end">
-                        <Link to="/purchase">
-                            <button className="btn btn-outline btn-primary border-0 border-b-4">Purchase</button>
-                        </Link>
+                        {/* <Link to="/purchase">
+                            <button onClick={handlePurchaseClick} className="btn btn-outline btn-primary border-0 border-b-4">Purchase</button>
+                        </Link> */}
+                        <button onClick={handlePurchaseClick} className="btn btn-outline btn-primary border-0 border-b-4">Purchase</button>
                     </div>
                 </div>
             </div>
