@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form"
 import useAuth from '../../hooks/useAuth';
 import usePart from '../../hooks/usePart';
@@ -7,16 +7,50 @@ import usePart from '../../hooks/usePart';
 const Form = () => {
     const { user } = useAuth();
     const { selectedPart } = usePart();
+    // console.log(selectedPart);
+    const [quantity, setQuantity] = useState('');
+    const [error, setError] = useState('');
+
+    // Update quantity when selectedPart is available
+    useEffect(() => {
+        if (selectedPart && selectedPart.minimum_order_quantity !== undefined) {
+            setQuantity(selectedPart.minimum_order_quantity);
+        }
+    }, [selectedPart]);
 
     const {
         register,
         handleSubmit,
         formState: { errors },
+        reset
     } = useForm()
 
     const onSubmit = (data) => {
-        console.log(data)
+        console.log(data);
+
+        reset();
     };
+
+    const handleIncrement = () => {
+        if (quantity < selectedPart.available_quantity) {
+            setQuantity(prevQuantity => prevQuantity + 1);
+            setError('');
+        }
+        else {
+            setError(`Quantity can not be more than ${selectedPart.available_quantity}`);
+        }
+    };
+
+
+    const handleDecrement = () => {
+        if (quantity > selectedPart.minimum_order_quantity) {
+            setQuantity(prevQuantity => prevQuantity - 1);
+            setError('');
+        }
+        else {
+            setError(`Quantity can not be less than ${selectedPart.minimum_order_quantity}`);
+        }
+    }
 
 
     return (
@@ -62,11 +96,20 @@ const Form = () => {
                     {/* Quantity */}
                     <div className='flex items-center space-x-4'>
                         <label className='w-1/3'>Quantity:</label>
-                        <input defaultValue={selectedPart?.minimum_order_quantity} className='px-3 py-2 flex-1' {...register("quantity", { required: true })} />
+                        <input value={quantity} className='px-3 py-2 flex-1' {...register("quantity", { required: true })} />
+                        <div>
+                            <div className="flex w-full justify-center">
+                                <kbd onClick={handleIncrement} className="kbd">▲</kbd>
+                            </div>
+                            <div className="flex w-full justify-center">
+                                <kbd onClick={handleDecrement} className="kbd">▼</kbd>
+                            </div>
+                        </div>
                     </div>
                     {errors.quantity?.type === 'required' && <p className='text-red-700'>Quantity is required</p>}
+                    {error && <p className='text-red-700'>{error}</p>}
 
-                    <button type="submit" className="btn btn-primary">Place Order</button>
+                    <button disabled={!!error} type="submit" className="btn btn-primary">Place Order</button>
                 </form>
             </div>
         </div>
