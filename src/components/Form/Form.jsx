@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form"
 import useAuth from '../../hooks/useAuth';
 import usePart from '../../hooks/usePart';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 
 const Form = () => {
@@ -10,6 +12,7 @@ const Form = () => {
     // console.log(selectedPart);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
+    const axiosSecure = useAxiosSecure();
 
     const {
         register,
@@ -39,6 +42,24 @@ const Form = () => {
 
     const onSubmit = (data) => {
         console.log(data);
+
+        axiosSecure.post('/purchasedParts', data)
+            .then(res => {
+                console.log(res.data);
+
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `${data.partsName} has been added`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
     };
 
     const handleIncrement = () => {
