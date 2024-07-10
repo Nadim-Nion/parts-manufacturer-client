@@ -1,14 +1,19 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Header from '../pages/SharedComponent/Header/Header';
 import Footer from '../pages/SharedComponent/Footer/Footer';
 
 const MainLayout = () => {
+    const location = useLocation();
+    // console.log(location);
+
+    const noHeaderFooter = location.pathname.includes('/login') || location.pathname.includes('/register');
+
     return (
         <div>
-            <Header></Header>
+            {noHeaderFooter || <Header></Header>}
             <Outlet></Outlet>
-            <Footer></Footer>
+            {noHeaderFooter || <Footer></Footer>}
         </div>
     );
 };
