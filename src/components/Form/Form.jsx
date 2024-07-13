@@ -51,7 +51,7 @@ const Form = () => {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: `${data.partsName} has been added`,
+                        title: `${data.partsName} has been placed`,
                         showConfirmButton: false,
                         timer: 1500
                     });

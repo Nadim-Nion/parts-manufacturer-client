@@ -7,6 +7,8 @@ import Register from "../pages/Register/Register"
 import Purchase from "../pages/PurchasePage/Purchase/Purchase";
 import PrivateRoute from "./PrivateRoute";
 import PartProvider from "../providers/PartProvider";
+import DashboardLayout from "../layouts/DashboardLayout";
+import MyOrders from "../pages/DashboardPage/MyOrders/MyOrders";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +35,17 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: 'dashboard',
+        element: <DashboardLayout></DashboardLayout>,
+        errorElement: <ErrorPage></ErrorPage>,
+        children: [
+            {
+                path: 'myOrders',
+                element: <MyOrders></MyOrders>
+            }
+        ]
+    }
 ]);
 
 
