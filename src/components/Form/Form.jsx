@@ -43,7 +43,12 @@ const Form = () => {
     const onSubmit = (data) => {
         console.log(data);
 
-        axiosSecure.post('/purchasedParts', data)
+        const partItem = {
+            ...data,
+            partId: selectedPart?._id
+        }
+
+        axiosSecure.post('/purchasedParts', partItem)
             .then(res => {
                 console.log(res.data);
 
