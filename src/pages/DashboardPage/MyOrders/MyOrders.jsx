@@ -1,13 +1,60 @@
 import React from 'react';
 import usePurchasedParts from '../../../hooks/usePurchasedParts';
-import { MdDelete } from 'react-icons/md';
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const MyOrders = () => {
-    const [purchasedParts, isLoading] = usePurchasedParts();
+    const [purchasedParts, isLoading, refetch] = usePurchasedParts();
     // console.log(purchasedParts);
+    const axiosSecure = useAxiosSecure();
 
     if (isLoading) {
         return <progress className="progress w-56"></progress>
+    }
+
+    const handleDeleteButton = (item) => {
+        // console.log(item);
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/purchasedParts/${item._id}`)
+                    .then(res => {
+                        console.log(res.data);
+
+                        if (res.data.deletedCount > 1) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: `${item.partsName} has been deleted.`,
+                                icon: "success"
+                            });
+                        }
+
+                        // refetch the api
+                        refetch();
+
+                    })
+                    .catch(error => {
+                        console.log(error);
+
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Something went wrong!",
+                            footer: '<a href="#">Why do I have this issue?</a>'
+                        });
+                    })
+
+
+            }
+        });
     }
 
     return (
@@ -39,8 +86,25 @@ const MyOrders = () => {
                                 <td>{item.userAddress}</td>
                                 <td>{item.phone}</td>
                                 <td>{item.quantity}</td>
-                                <td>Pay</td>
-                                <td><MdDelete /></td>
+                                <td>
+                                    <button className="btn btn-outline btn-primary">Pay</button>
+                                </td>
+                                <td>
+                                    <button onClick={() => handleDeleteButton(item)} className="btn btn-square btn-outline">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="h-6 w-6"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </button>
+                                </td>
                             </tr>)
                         }
                     </tbody>

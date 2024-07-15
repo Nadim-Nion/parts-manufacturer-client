@@ -7,7 +7,7 @@ const usePurchasedParts = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    const { data: purchasedParts = [], isLoading } = useQuery({
+    const { data: purchasedParts = [], isLoading, refetch } = useQuery({
         queryKey: ['purchasedParts', user?.userEmail],
         queryFn: async () => {
             const res = await axiosSecure.get('/purchasedParts');
@@ -15,7 +15,7 @@ const usePurchasedParts = () => {
         }
     });
 
-    return [purchasedParts, isLoading];
+    return [purchasedParts, isLoading, refetch];
 };
 
 export default usePurchasedParts;
