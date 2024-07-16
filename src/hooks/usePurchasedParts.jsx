@@ -10,9 +10,9 @@ const usePurchasedParts = () => {
     const { data: purchasedParts = [], isLoading, refetch } = useQuery({
         queryKey: ['purchasedParts', user?.userEmail],
         queryFn: async () => {
-            const res = await axiosSecure.get('/purchasedParts');
+            const res = await axiosSecure.get(`/purchasedParts?email=${user?.email}`);
             return res.data;
-        }
+        },
     });
 
     return [purchasedParts, isLoading, refetch];

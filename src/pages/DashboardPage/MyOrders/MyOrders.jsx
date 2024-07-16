@@ -37,7 +37,7 @@ const MyOrders = () => {
                             });
                         }
 
-                        // Clear the deleted item from the api
+                        // Clear the deleted item from the UI
                         refetch();
 
                     })
