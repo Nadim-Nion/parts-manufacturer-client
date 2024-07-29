@@ -2,6 +2,7 @@ import React from 'react';
 import usePurchasedParts from '../../../hooks/usePurchasedParts';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { Link } from 'react-router-dom';
 
 const MyOrders = () => {
     const [purchasedParts, isLoading, refetch] = usePurchasedParts();
@@ -12,7 +13,7 @@ const MyOrders = () => {
         return <progress className="progress w-56"></progress>
     }
 
-    const handleDeleteButton = (item) => {
+    const handleDelete = (item) => {
         // console.log(item);
 
         Swal.fire({
@@ -29,7 +30,7 @@ const MyOrders = () => {
                     .then(res => {
                         console.log(res.data);
 
-                        if (res.data.deletedCount > 1) {
+                        if (res.data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
                                 text: `${item.partsName} has been deleted.`,
@@ -60,7 +61,7 @@ const MyOrders = () => {
     return (
         <div>
             <h2 className='text-4xl text-center font-bold text-purple-700 my-5'>Welcome To Your Dashboard</h2>
-            <p className='text-3xl font-semibold text-center text-purple-700 mb-3'>Total Orders: </p>
+            <p className='text-3xl font-semibold text-center text-purple-700 mb-3'>Total Orders: {purchasedParts.length}</p>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -87,10 +88,12 @@ const MyOrders = () => {
                                 <td>{item.phone}</td>
                                 <td>{item.quantity}</td>
                                 <td>
-                                    <button className="btn btn-outline btn-primary">Pay</button>
+                                    <Link to="/dashboard/payment">
+                                        <button className="btn btn-outline btn-primary">Pay</button>
+                                    </Link>
                                 </td>
                                 <td>
-                                    <button onClick={() => handleDeleteButton(item)} className="btn btn-square btn-outline">
+                                    <button onClick={() => handleDelete(item)} className="btn btn-square btn-outline">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             className="h-6 w-6"

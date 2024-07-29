@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import PartProvider from "../providers/PartProvider";
 import DashboardLayout from "../layouts/DashboardLayout";
 import MyOrders from "../pages/DashboardPage/MyOrders/MyOrders";
+import Payment from "../pages/DashboardPage/Payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -37,12 +38,18 @@ const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         errorElement: <ErrorPage></ErrorPage>,
         children: [
+
+            // regular users only route
             {
                 path: 'myOrders',
                 element: <MyOrders></MyOrders>
+            },
+            {
+                path: 'payment',
+                element: <Payment></Payment>
             }
         ]
     }
