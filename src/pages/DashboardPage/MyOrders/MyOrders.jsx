@@ -1,12 +1,12 @@
 import React from 'react';
-import usePurchasedParts from '../../../hooks/usePurchasedParts';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { Link } from 'react-router-dom';
+import usePurchasedPartsDetails from '../../../hooks/usePurchasedPartsDetails';
 
 const MyOrders = () => {
-    const [purchasedParts, isLoading, refetch] = usePurchasedParts();
-    // console.log(purchasedParts);
+
+    const [purchasedPartsDetails, isLoading, refetch] = usePurchasedPartsDetails();
     const axiosSecure = useAxiosSecure();
 
     if (isLoading) {
@@ -61,7 +61,7 @@ const MyOrders = () => {
     return (
         <div>
             <h2 className='text-4xl text-center font-bold text-purple-700 my-5'>Welcome To Your Dashboard</h2>
-            <p className='text-3xl font-semibold text-center text-purple-700 mb-3'>Total Orders: {purchasedParts.length}</p>
+            <p className='text-3xl font-semibold text-center text-purple-700 mb-3'>Total Orders: {purchasedPartsDetails.length}</p>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -80,7 +80,7 @@ const MyOrders = () => {
                     <tbody className='text-lg'>
                         {/* row 1 */}
                         {
-                            purchasedParts.map((item, index) => <tr key={item._id}>
+                            purchasedPartsDetails.map((item, index) => <tr key={item._id}>
                                 <th>{index + 1}</th>
                                 <td>{item.partsName}</td>
                                 <td>{item.userName}</td>
@@ -88,7 +88,7 @@ const MyOrders = () => {
                                 <td>{item.phone}</td>
                                 <td>{item.quantity}</td>
                                 <td>
-                                    <Link to="/dashboard/payment">
+                                    <Link to={`/dashboard/payment/${item._id}`} state={{ selectedItem: item }}>
                                         <button className="btn btn-outline btn-primary">Pay</button>
                                     </Link>
                                 </td>

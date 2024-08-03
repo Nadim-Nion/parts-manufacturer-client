@@ -48,7 +48,7 @@ const router = createBrowserRouter([
                 element: <MyOrders></MyOrders>
             },
             {
-                path: 'payment',
+                path: 'payment/:id',
                 element: <Payment></Payment>
             }
         ]
