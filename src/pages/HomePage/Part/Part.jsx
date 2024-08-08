@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import usePart from '../../../hooks/usePart';
 
-
 const Part = ({ part }) => {
     const { setSelectedPart } = usePart();
     const { name, image, short_description, minimum_order_quantity, available_quantity, price_per_unit } = part;
@@ -10,7 +9,7 @@ const Part = ({ part }) => {
 
     const handlePurchaseClick = () => {
         setSelectedPart(part);
-        navigate('/purchase', { state: { part } })
+        navigate('/purchase', { state: { part } });
     };
 
     return (
