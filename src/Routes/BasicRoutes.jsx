@@ -10,6 +10,7 @@ import PartProvider from "../providers/PartProvider";
 import DashboardLayout from "../layouts/DashboardLayout";
 import MyOrders from "../pages/DashboardPage/MyOrders/MyOrders";
 import Payment from "../pages/DashboardPage/Payment/Payment";
+import AddReview from "../pages/DashboardPage/AddReview/AddReview";
 
 const router = createBrowserRouter([
     {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
             {
                 path: 'payment/:id',
                 element: <Payment></Payment>
+            },
+            {
+                path: 'addReview',
+                element: <AddReview></AddReview>
             }
         ]
     }
