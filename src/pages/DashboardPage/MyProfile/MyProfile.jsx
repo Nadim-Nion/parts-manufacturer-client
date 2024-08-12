@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import useAuth from '../../../hooks/useAuth';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const MyProfile = () => {
     const {
@@ -11,9 +13,36 @@ const MyProfile = () => {
     } = useForm();
 
     const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
 
     const onSubmit = (userInfo) => {
         console.log(userInfo);
+
+        axiosSecure.post('/myProfiles', userInfo)
+            .then(res => {
+                console.log(res.data);
+
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your Information has been saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+            .catch(error => {
+                console.log(error);
+
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: `${error.message}`,
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                });
+            })
+
 
         reset();
     };
@@ -45,7 +74,7 @@ const MyProfile = () => {
                     {/* Location */}
                     <div className='flex items-center space-x-3'>
                         <label className='w-1/4'>Location:</label>
-                        <input className='flex-1 px-3 py-2' placeholder='Your Location' {...register("location", { required: true })} />
+                        <input className='flex-1 px-3 py-2' placeholder='Your City or District' {...register("location", { required: true })} />
                         {errors.location && <p className='text-red-700'>Location is required</p>}
                     </div>
 
