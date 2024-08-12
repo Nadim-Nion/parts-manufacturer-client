@@ -11,6 +11,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import MyOrders from "../pages/DashboardPage/MyOrders/MyOrders";
 import Payment from "../pages/DashboardPage/Payment/Payment";
 import AddReview from "../pages/DashboardPage/AddReview/AddReview";
+import MyProfile from "../pages/DashboardPage/MyProfile/MyProfile";
 
 const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
             {
                 path: 'addReview',
                 element: <AddReview></AddReview>
+            },
+            {
+                path: 'myProfile',
+                element: <MyProfile></MyProfile>
             }
         ]
     }
