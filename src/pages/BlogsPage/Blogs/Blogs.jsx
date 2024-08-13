@@ -61,11 +61,11 @@ const Blogs = () => {
                     <input type="radio" name="my-accordion-2" />
                     <div className="collapse-title text-xl font-medium">Q.5 You have an array of products. Each product has a name, price, description, etc. How will you implement a search to find products by name?  </div>
                     <div className="collapse-content">
-                        <p>To implement a search to find products by name in an array, you can use the `filter` method along with the `includes` method for case-insensitive matching. Here is an example: </p> <br /> <br />
+                        <p>To implement a search to find products by name in an array, you can use the `filter` method along with the `includes` method for case-insensitive matching. Here is an example: </p> <br />
 
                         <p>
                             To search for products by name, use the `filter` method on the array. You compare each products name with the search query, converting both to lowercase for case-insensitive matching. This approach creates a new array containing only the products whose names include the search query. For example, if the search query is <b>Phone</b>, it will return all products with <b>Phone</b> in their names, ensuring the results are dynamically filtered based on user input.
-                        </p> <br /> <br />
+                        </p> <br />
 
                         <p> This function takes the `products` array and a `searchTerm`, then returns a new array of products whose names include the `searchTerm`. The `toLowerCase()` method ensures the search is case-insensitive.</p>
                     </div>
