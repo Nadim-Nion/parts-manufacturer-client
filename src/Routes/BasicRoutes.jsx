@@ -12,6 +12,7 @@ import MyOrders from "../pages/DashboardPage/MyOrders/MyOrders";
 import Payment from "../pages/DashboardPage/Payment/Payment";
 import AddReview from "../pages/DashboardPage/AddReview/AddReview";
 import MyProfile from "../pages/DashboardPage/MyProfile/MyProfile";
+import Blogs from "../pages/BlogsPage/Blogs/Blogs";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: 'register',
                 element: <Register></Register>
+            },
+            {
+                path: 'blogs',
+                element: <Blogs></Blogs>
             }
         ]
     },
