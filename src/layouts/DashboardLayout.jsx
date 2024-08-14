@@ -40,7 +40,7 @@ const DashboardLayout = () => {
             </NavLink>
         </li>
         <li>
-            <NavLink to='/myPortfolio'>
+            <NavLink to='/portfolio'>
                 <FaBriefcase />
                 My Portfolio
             </NavLink>

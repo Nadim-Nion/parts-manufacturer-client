@@ -13,6 +13,7 @@ import Payment from "../pages/DashboardPage/Payment/Payment";
 import AddReview from "../pages/DashboardPage/AddReview/AddReview";
 import MyProfile from "../pages/DashboardPage/MyProfile/MyProfile";
 import Blogs from "../pages/BlogsPage/Blogs/Blogs";
+import MyPortfolio from "../pages/MyPortfolioPage/MyPortfolio/MyPortfolio";
 
 const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
             {
                 path: 'blogs',
                 element: <Blogs></Blogs>
+            },
+            {
+                path: 'portfolio',
+                element: <MyPortfolio></MyPortfolio>
             }
         ]
     },
