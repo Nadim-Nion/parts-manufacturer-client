@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
+import SocialLogin from '../../components/SocialLogin/SocialLogin';
 
 const Login = () => {
     const { createUser, updateUserProfile } = useAuth();
@@ -87,6 +88,7 @@ const Login = () => {
                             <Link to="/login">Login</Link>
                         </span>
                     </p>
+                    <SocialLogin></SocialLogin>
                 </form>
             </div>
         </div>
