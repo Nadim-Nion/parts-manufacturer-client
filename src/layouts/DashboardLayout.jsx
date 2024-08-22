@@ -2,31 +2,74 @@ import React from 'react';
 import { BsFillCartFill } from 'react-icons/bs';
 import { CgProfile } from 'react-icons/cg';
 import { FaBriefcase, FaHome } from 'react-icons/fa';
+import { FaSitemap } from 'react-icons/fa6';
+import { GoChecklist } from 'react-icons/go';
 import { GrArticle } from 'react-icons/gr';
+import { IoMdAddCircle } from 'react-icons/io';
 import { MdOutlineRateReview } from 'react-icons/md';
+import { RiAdminFill } from 'react-icons/ri';
 import { NavLink, Outlet } from 'react-router-dom';
 
 const DashboardLayout = () => {
+
+    // TODO: Get isAdmin value from the Database
+    const isAdmin = true;
+
     const navItems = <>
-        <li>
-            <NavLink to="/dashboard/myOrders">
-                <BsFillCartFill />
-                My Order
-            </NavLink>
-        </li>
-        <li>
-            <NavLink to="/dashboard/addReview">
-                <MdOutlineRateReview />
-                Add a Review
-            </NavLink>
-        </li>
+        {/* Dedicated NavLinks for Admin or Users */}
+        {
+            isAdmin ?
+                <>
+                    <li>
+                        <NavLink to="/dashboard/manageOrders">
+                            <GoChecklist />
+                            Manage All orders
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/dashboard/addProduct">
+                            <IoMdAddCircle />
+                            Add a Product
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/dashboard/makeAdmin">
+                            <RiAdminFill />
+                            Make Admin
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/dashboard/manageProducts">
+                            <FaSitemap />
+                            Manage Products
+                        </NavLink>
+                    </li>
+                </>
+                :
+                <>
+                    <li>
+                        <NavLink to="/dashboard/myOrders">
+                            <BsFillCartFill />
+                            My Order
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/dashboard/addReview">
+                            <MdOutlineRateReview />
+                            Add a Review
+                        </NavLink>
+                    </li>
+                </>
+        }
+
+        {/* Shared NavLinks */}
+        <div className="divider divider-info"></div>
         <li>
             <NavLink to="/dashboard/myProfile">
                 <CgProfile />
                 My Profile
             </NavLink>
         </li>
-        <div className="divider divider-info"></div>
         <li>
             <NavLink to='/'>
                 <FaHome />
