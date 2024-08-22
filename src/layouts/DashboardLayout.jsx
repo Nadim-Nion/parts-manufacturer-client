@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { BsFillCartFill } from 'react-icons/bs';
 import { CgProfile } from 'react-icons/cg';
 import { FaBriefcase, FaHome } from 'react-icons/fa';
@@ -92,6 +93,9 @@ const DashboardLayout = () => {
 
     return (
         <div className="drawer">
+            <Helmet>
+                <title>Dashboard - CompParts Hub</title>
+            </Helmet>
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col">
                 {/* Navbar */}

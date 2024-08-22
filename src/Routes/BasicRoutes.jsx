@@ -54,7 +54,7 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage></ErrorPage>,
         children: [
 
-            // Regular Users only route
+            // Regular Users only routes
             {
                 path: 'myOrders',
                 element: <MyOrders></MyOrders>
@@ -72,7 +72,9 @@ const router = createBrowserRouter([
             {
                 path: 'myProfile',
                 element: <MyProfile></MyProfile>
-            }
+            },
+
+            // Admin Only routes
         ]
     }
 ]);
