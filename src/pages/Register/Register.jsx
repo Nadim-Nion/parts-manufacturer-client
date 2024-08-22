@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form"
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 const Login = () => {
     const { createUser, updateUserProfile } = useAuth();
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
 
     const {
         register,
@@ -28,16 +30,29 @@ const Login = () => {
                     .then(() => {
                         console.log('User information updated successfully');
 
-                        Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: "User has been created successfully",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    });
+                        // Create a user entry to the database
+                        const userInfo = { name, email };
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                console.log(res.data);
 
-                navigate('/');
+                                if (res.data.insertedId) {
+                                    console.log('User information added to the database');
+
+                                    reset();
+
+                                    Swal.fire({
+                                        position: "top-end",
+                                        icon: "success",
+                                        title: "User has been created successfully",
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+
+                                    navigate('/');
+                                }
+                            })
+                    });
             })
             .catch(error => {
                 console.log(error);
@@ -48,10 +63,6 @@ const Login = () => {
                     text: `${error.message}`
                 });
             })
-
-
-
-        reset();
     };
 
 

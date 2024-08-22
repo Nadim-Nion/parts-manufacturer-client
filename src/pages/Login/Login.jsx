@@ -29,6 +29,8 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
 
+                reset();
+
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -49,7 +51,6 @@ const Login = () => {
                 });
             })
 
-        reset();
     };
 
     return (
