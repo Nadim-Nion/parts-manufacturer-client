@@ -38,7 +38,7 @@ const MakeAdmin = () => {
 
                             Swal.fire({
                                 title: "Deleted!",
-                                text: `${user.name} has deleted`,
+                                text: `${user.name} has been deleted`,
                                 icon: "success"
                             });
                         }
@@ -48,7 +48,23 @@ const MakeAdmin = () => {
     };
 
     const handleMakeAdmin = user => {
-        console.log(user._id);
+
+        axiosSecure.patch(`/users/admin/${user._id}`)
+            .then(res => {
+                console.log(res.data);
+
+                if (res.data.modifiedCount > 0) {
+                    refetch();
+
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `${user.name} is now an Admin`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
     };
 
     return (
@@ -74,9 +90,15 @@ const MakeAdmin = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>
-                                    <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost btn-lg bg-purple-700">
-                                        <GrUserAdmin className='text-white' />
-                                    </button>
+                                    {
+                                        user.role === 'admin' ?
+                                            <div className="badge badge-primary text-lg p-3">Admin</div>
+                                            :
+                                            <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost btn-lg bg-purple-700">
+                                                <GrUserAdmin className='text-white' />
+                                            </button>
+
+                                    }
                                 </td>
                                 <td>
                                     <button onClick={() => handleDelete(user)} className="btn btn-ghost btn-lg bg-red-700">
