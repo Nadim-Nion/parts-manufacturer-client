@@ -14,6 +14,7 @@ import AddReview from "../pages/DashboardPage/AddReview/AddReview";
 import MyProfile from "../pages/DashboardPage/MyProfile/MyProfile";
 import Blogs from "../pages/BlogsPage/Blogs/Blogs";
 import MyPortfolio from "../pages/MyPortfolioPage/MyPortfolio/MyPortfolio";
+import MakeAdmin from "../pages/DashboardPage/MakeAdmin/MakeAdmin";
 
 const router = createBrowserRouter([
     {
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage></ErrorPage>,
         children: [
 
-            // Regular Users only routes
+            // Regular Users only route
             {
                 path: 'myOrders',
                 element: <MyOrders></MyOrders>
@@ -74,7 +75,11 @@ const router = createBrowserRouter([
                 element: <MyProfile></MyProfile>
             },
 
-            // Admin Only routes
+            // Admin Only route
+            {
+                path: 'makeAdmin',
+                element: <MakeAdmin></MakeAdmin>
+            }
         ]
     }
 ]);
