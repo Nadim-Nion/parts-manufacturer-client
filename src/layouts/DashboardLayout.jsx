@@ -16,7 +16,6 @@ const DashboardLayout = () => {
 
     // TODO: Get isAdmin value from the Database
     const [isAdmin] = useAdmin();
-    // const isAdmin = true;
 
     const navItems = <>
         {/* Dedicated NavLinks for Admin or Users */}

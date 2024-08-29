@@ -11,9 +11,6 @@ const Header = () => {
     const navItems = <>
         <li className='font-bold'><Link to="/">Home</Link></li>
         <li className='font-bold'><Link to="/purchase">Purchase</Link></li>
-        {/* {
-            user && <li className='font-bold'><Link to="/dashboard">Dashboard</Link></li>
-        } */}
         {
             user && isAdmin && <li className='font-bold'><Link to="/dashboard/makeAdmin">Dashboard</Link></li>
         }
