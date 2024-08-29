@@ -2,15 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import Swal from 'sweetalert2';
+import useAdmin from '../../../hooks/useAdmin';
 
 const Header = () => {
     const { user, logOut } = useAuth();
+    const [isAdmin] = useAdmin();
 
     const navItems = <>
         <li className='font-bold'><Link to="/">Home</Link></li>
         <li className='font-bold'><Link to="/purchase">Purchase</Link></li>
-        {
+        {/* {
             user && <li className='font-bold'><Link to="/dashboard">Dashboard</Link></li>
+        } */}
+        {
+            user && isAdmin && <li className='font-bold'><Link to="/dashboard/makeAdmin">Dashboard</Link></li>
+        }
+        {
+            user && !isAdmin && <li className='font-bold'><Link to="/dashboard/myOrders">Dashboard</Link></li>
         }
         <li className='font-bold'><Link to="/blogs">Blogs</Link></li>
         <li className='font-bold'><Link to="/portfolio">My Portfolio</Link></li>

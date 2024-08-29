@@ -46,13 +46,13 @@ const AuthProvider = ({ children }) => {
             const userEmail = currentUser?.email || user?.email;
             const loggedInUser = { email: userEmail };
             setUser(currentUser);
-            setLoading(false);
 
             // If user exists, then issue a token
             if (currentUser) {
                 axiosPublic.post('/jwt', loggedInUser)
                     .then(res => {
                         console.log('Token response:', res.data);
+                        setLoading(false);
                     })
             }
             else {
@@ -60,8 +60,11 @@ const AuthProvider = ({ children }) => {
                 axiosPublic.post('/logout', loggedInUser)
                     .then(res => {
                         console.log('Token response:', res.data);
+                        setLoading(false);
                     })
             }
+
+            // setLoading(false);
 
         });
 

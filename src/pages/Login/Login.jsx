@@ -23,7 +23,7 @@ const Login = () => {
     const onSubmit = (data) => {
         console.log(data);
 
-        const { email, password } = data;
+        const { displayName, email, password } = data;
         signIn(email, password)
             .then(result => {
                 const loggedUser = result.user;
@@ -34,7 +34,7 @@ const Login = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: "User has been logged-in successfully",
+                    title: `${displayName} has been logged-in successfully`,
                     showConfirmButton: false,
                     timer: 1500
                 });

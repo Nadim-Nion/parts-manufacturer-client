@@ -10,11 +10,13 @@ import { IoMdAddCircle } from 'react-icons/io';
 import { MdOutlineRateReview } from 'react-icons/md';
 import { RiAdminFill } from 'react-icons/ri';
 import { NavLink, Outlet } from 'react-router-dom';
+import useAdmin from '../hooks/useAdmin';
 
 const DashboardLayout = () => {
 
     // TODO: Get isAdmin value from the Database
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
+    // const isAdmin = true;
 
     const navItems = <>
         {/* Dedicated NavLinks for Admin or Users */}
