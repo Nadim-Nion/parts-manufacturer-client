@@ -15,6 +15,8 @@ import MyProfile from "../pages/DashboardPage/MyProfile/MyProfile";
 import Blogs from "../pages/BlogsPage/Blogs/Blogs";
 import MyPortfolio from "../pages/MyPortfolioPage/MyPortfolio/MyPortfolio";
 import MakeAdmin from "../pages/DashboardPage/MakeAdmin/MakeAdmin";
+import AddProduct from "../pages/DashboardPage/AddProduct/AddProduct";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -78,7 +80,11 @@ const router = createBrowserRouter([
             // Admin Only route
             {
                 path: 'makeAdmin',
-                element: <MakeAdmin></MakeAdmin>
+                element: <AdminRoute><MakeAdmin></MakeAdmin></AdminRoute>
+            },
+            {
+                path: 'addProduct',
+                element: <AdminRoute><AddProduct></AddProduct></AdminRoute>
             }
         ]
     }
