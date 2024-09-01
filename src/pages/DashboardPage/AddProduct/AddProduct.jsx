@@ -1,5 +1,9 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddProduct = () => {
     const {
@@ -8,8 +12,19 @@ const AddProduct = () => {
         formState: { errors },
     } = useForm()
 
-    const onSubmit = (data) => {
+    const axiosPublic = useAxiosPublic();
+
+    const onSubmit = async (data) => {
         console.log(data);
+
+        // Upload image to imgbb to get an URL
+        const imageFile = { image: data.image[0] };
+        const res = await axiosPublic.post(image_hosting_api, imageFile, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        });
+        console.log(res.data);
     };
 
     return (
@@ -18,6 +33,7 @@ const AddProduct = () => {
             <div className='h-screen flex justify-center items-center'>
                 <div className='bg-white p-10 rounded-lg shadow-lg sm:w-3/4 md:w-1/2'>
                     <form className='flex flex-col space-y-5 w-1/2 mx-auto' onSubmit={handleSubmit(onSubmit)}>
+
                         {/* Name */}
                         <div className='flex items-center space-x-4'>
                             <label className='w-1/2'>Name</label>
@@ -53,7 +69,13 @@ const AddProduct = () => {
                         </div>
                         {errors.price_per_unit?.type === 'required' && <p className='text-red-700'>Price per Unit is required</p>}
 
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        {/* Image */}
+                        <input
+                            type="file"
+                            className="file-input file-input-bordered file-input-primary w-full sm:max-w-[350px] md:max-w-[400px] min-w-[200px]" {...register("image", { required: true })}
+                        />
+
+                        <button type="submit" className="btn btn-primary">Add Product</button>
                     </form>
                 </div>
             </div>
