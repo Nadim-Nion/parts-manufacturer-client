@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from 'sweetalert2';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -9,10 +11,12 @@ const AddProduct = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm()
 
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
 
     const onSubmit = async (data) => {
         console.log(data);
@@ -22,9 +26,37 @@ const AddProduct = () => {
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
             headers: {
                 'content-type': 'multipart/form-data'
-            }
+            },
+            withCredentials: false
         });
-        console.log(res.data);
+        console.log('Image URL:', res.data);
+
+        if (res.data.success) {
+            // Now send the partItem to the server with image URL
+            const partItem = {
+                name: data.name,
+                short_description: data.short_description,
+                minimum_order_quantity: parseInt(data.minimum_order_quantity),
+                available_quantity: parseInt(data.available_quantity),
+                price_per_unit: parseInt(data.price_per_unit),
+                image: res.data.data.display_url
+            };
+            const itemRes = await axiosSecure.post('/parts', partItem);
+            console.log(itemRes.data);
+
+            if (itemRes.data.insertedId) {
+                reset();
+
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${data.name} has been added to the Parts`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+
+        }
     };
 
     return (
