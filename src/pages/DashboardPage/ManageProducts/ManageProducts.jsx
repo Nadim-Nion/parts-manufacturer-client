@@ -3,6 +3,8 @@ import useParts from '../../../hooks/useParts';
 import { MdDeleteForever } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { FaEdit } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const ManageProducts = () => {
     const [parts, refetch] = useParts();
@@ -53,7 +55,8 @@ const ManageProducts = () => {
                                 <th>Name</th>
                                 <th>Available Quantity</th>
                                 <th>Price Per Unit</th>
-                                <th>Action</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody className='text-lg text-black'>
@@ -79,6 +82,13 @@ const ManageProducts = () => {
                                     </td>
                                     <td>{part.available_quantity}</td>
                                     <td>${part.price_per_unit}</td>
+                                    <th>
+                                        <Link to={`/dashboard/updatePart/${part._id}`}>
+                                            <button className="btn btn-ghost btn-lg bg-purple-700">
+                                                <FaEdit className='text-white text-2xl' />
+                                            </button>
+                                        </Link>
+                                    </th>
                                     <th>
                                         <button onClick={() => handleDelete(part)} className="btn btn-ghost btn-lg bg-red-700">
                                             <MdDeleteForever className='text-white text-2xl' />
