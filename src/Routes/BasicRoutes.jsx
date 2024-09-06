@@ -19,6 +19,7 @@ import AddProduct from "../pages/DashboardPage/AddProduct/AddProduct";
 import AdminRoute from "./AdminRoute";
 import ManageProducts from "../pages/DashboardPage/ManageProducts/ManageProducts";
 import UpdateProduct from "../pages/DashboardPage/UpdateProduct/UpdateProduct";
+import ManageOrder from "../pages/DashboardPage/ManageOrder/ManageOrder";
 
 const router = createBrowserRouter([
     {
@@ -96,6 +97,10 @@ const router = createBrowserRouter([
                 path: 'updatePart/:id',
                 element: <AdminRoute><UpdateProduct></UpdateProduct></AdminRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/parts/${params.id}`)
+            },
+            {
+                path: 'manageOrders',
+                element: <AdminRoute><ManageOrder></ManageOrder></AdminRoute>
             }
         ]
     }
