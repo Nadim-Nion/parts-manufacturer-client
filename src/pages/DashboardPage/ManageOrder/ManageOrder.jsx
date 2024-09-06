@@ -59,9 +59,11 @@ const ManageOrder = () => {
                                     <td>
                                         {
                                             order.status === 'pending' ?
-                                                <div className="badge badge-primary">{order.status}</div>
+                                                <button className="btn btn-outline btn-primary btn-lg">
+                                                    {order.status}
+                                                </button>
                                                 :
-                                                <div className="badge badge-neutral">unpaid</div>
+                                                <div className="badge badge-primary ml-5 py-5">Unpaid</div>
                                         }
                                     </td>
                                     <td>
