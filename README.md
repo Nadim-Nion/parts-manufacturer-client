@@ -4,6 +4,8 @@
 
 Welcome to the **Client Side** repository of the **CompParts Hub**, a MERN stack-based website for managing orders, products, and users in a parts manufacturing business.
 
+---
+
 ## 🚀 **Key Features**
 
 1. **Responsive Layout**: Separate user-friendly layouts for **Users** and **Admins**.
