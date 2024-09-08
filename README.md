@@ -99,7 +99,7 @@ Welcome to the **Client Side** repository of the **CompParts Hub**, a MERN stack
 * Image 9: 
 ![image](https://github.com/user-attachments/assets/cda6dbc1-cb4c-493c-b6f6-062970604e59)
 
-** Admin Dashboard ** 
+**Admin Dashboard** 
 
 * Image 10: 
 ![image](https://github.com/user-attachments/assets/3d26f30a-59e9-448e-ad91-dd1c3101adf0)
