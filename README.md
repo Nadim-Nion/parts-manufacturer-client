@@ -214,6 +214,7 @@ git push -u origin main
 
 ```
 
+---
 
 ## Tech Stack
 
@@ -238,6 +239,8 @@ Answer : Yes, the full website is responsive for the all devices (Desktop, Table
 #### Is this website store data to the database?
 
 Answer : I have stored all the data in MongoDB.
+
+---
 
 ## 🚀 About Me
 Hi, I am Nadim Mahmud Nion. I have recently concluded my graduation from the department of Computer Science and Engineering (CSE) at the Daffodil International University (DIU). I have been learning MERN Stack Web Development since 2022. I am expertise in the following skills:
