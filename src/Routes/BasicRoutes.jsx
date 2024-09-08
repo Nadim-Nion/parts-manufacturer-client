@@ -96,7 +96,8 @@ const router = createBrowserRouter([
             {
                 path: 'updatePart/:id',
                 element: <AdminRoute><UpdateProduct></UpdateProduct></AdminRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/parts/${params.id}`)
+                // loader: ({ params }) => fetch(`http://localhost:5000/parts/${params.id}`)
+                loader: ({ params }) => fetch(`https://parts-manufacturer-server-nine.vercel.app/parts/${params.id}`)
             },
             {
                 path: 'manageOrders',
