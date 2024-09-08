@@ -66,6 +66,54 @@ Welcome to the **Client Side** repository of the **CompParts Hub**, a MERN stack
 * Netlify: https://parts-manufacturer-client-nion.netlify.app/
 
 * Surge: https://acceptable-shoe.surge.sh/
+
+---
+## Screenshots
+
+* Image 1: 
+![image](https://github.com/user-attachments/assets/f15cf95a-d323-46d8-9173-56dcb92a3b20)
+
+* Image 2: 
+![image](https://github.com/user-attachments/assets/d2aaf03f-124c-4a61-a72f-7e5a3dbc7bad)
+
+* Image 3: 
+![image](https://github.com/user-attachments/assets/5e180138-418f-4dac-9487-8a910eb7d13f)
+
+* Image 4: 
+![image](https://github.com/user-attachments/assets/b1bb4c83-b27f-4e07-84a5-b48188a11c40)
+
+* Image 5: 
+![image](https://github.com/user-attachments/assets/7ed04e5f-2a8b-43f3-a1d0-e97ff720db98)
+
+* Image 6: 
+![image](https://github.com/user-attachments/assets/69d1f385-e2f1-4d3a-bb49-d1c416e40678)
+
+* Image 7: 
+![image](https://github.com/user-attachments/assets/dff0f904-eafa-4c02-bac2-a00019debd9d)
+
+* Image 8: 
+![image](https://github.com/user-attachments/assets/e979fa6f-51cc-4fcb-b760-7de4f9c76245)
+
+* Image 9: 
+![image](https://github.com/user-attachments/assets/cda6dbc1-cb4c-493c-b6f6-062970604e59)
+
+** Admin Dashboard ** 
+
+* Image 10: 
+![image](https://github.com/user-attachments/assets/3d26f30a-59e9-448e-ad91-dd1c3101adf0)
+
+* Image 11: 
+![image](https://github.com/user-attachments/assets/2b5e1c92-bca9-40ad-b758-1e54e7ae0040)
+
+* Image 12: 
+![image](https://github.com/user-attachments/assets/dcae7da6-d2a1-40da-a5b9-23fb9cca834a)
+
+* Image 13: 
+![image](https://github.com/user-attachments/assets/be7a5004-e2e7-42e0-b875-f2c9aa96f460)
+
+* Image 14: 
+![image](https://github.com/user-attachments/assets/bf883c63-f3bb-4fec-bd6c-f9825bf1de1b)
+---
 ## Getting Startted
 
 ### 📂 **Folder Structure**
@@ -112,6 +160,8 @@ Welcome to the **Client Side** repository of the **CompParts Hub**, a MERN stack
 
 4. Add environment variables in `.env.local` for Firebase and Stripe configurations.Absolutely, here's the section on commits with a potential improvement:
 
+---
+
 ## Commits
 
 This repository adheres to a structured commit message convention to enhance readability and maintainability. Here's an overview of the key commit types:
@@ -129,6 +179,9 @@ This repository adheres to a structured commit message convention to enhance rea
 Consider adopting a more comprehensive commit message convention like Conventional Commits ([https://www.conventionalcommits.org/en/v1.0.0-beta.4/](https://www.conventionalcommits.org/en/v1.0.0-beta.4/)). This approach provides a standard format for commit messages, including type, scope (optional), and a clear description of the change, making it easier to generate changelogs, automate workflows, and collaborate effectively.
 
 By following these guidelines and potentially adopting a more detailed convention, you'll ensure clear and consistent commit messages that benefit you and your team in the long run.
+
+---
+
 ## Contributing
 
 Contributions are always welcome!
@@ -137,11 +190,13 @@ Contributions are welcome! Please open a pull request for any improvements or fe
 
 Please adhere to this project's `code of conduct`.
 
+---
 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
 
+---
 
 ## Deployment
 
@@ -170,7 +225,7 @@ git push -u origin main
 
 **State Management:** Context API
 
-
+---
 
 ## FAQ
 
